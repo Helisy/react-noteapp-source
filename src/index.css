@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+body
+{
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.NoteContainer
+{
+    margin-top: 50px;
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 0.5fr));
+}
+
+.note-body
+{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+}
+
+.note-body input
+{
+    outline: none;
+}
+
+.note-body textarea
+{
+    height: 100%;
+    resize: none;
+    outline: none;
+}
+
+.add-btn
+{   
+    right: 50px;
+    position: fixed;
+    padding: 20px 30px;
+}
