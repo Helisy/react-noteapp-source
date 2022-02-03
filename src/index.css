@@ -9,17 +9,18 @@ body
 {
     font-family: 'Roboto', sans-serif;
     width: 100%;
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
 }
 
 .NoteContainer
 {
-    margin-top: 50px;
+    margin-top: 100px;
+    margin-bottom: 100px;
     max-width: 960px;
     margin-right: auto;
     margin-left: auto;
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 15px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 0.5fr));
 }
 
@@ -28,24 +29,107 @@ body
     height: 200px;
     display: flex;
     flex-direction: column;
-    background-color: red;
+    background-color: white;
+    padding: 5px 10px 10px 10px;
+    box-shadow: 0px 0px 5px rgba(186, 186, 186, 0.99);
+    border-radius: 5px;
 }
 
 .note-body input
 {
+    color: rgb(43, 43, 43);
     outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    height: 35px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+.note-body input:focus
+{
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px 5px 0px 0px;
+}
+
+.note-body input::placeholder
+{
+    color: rgb(230, 230, 230);
 }
 
 .note-body textarea
 {
+
+    color: rgb(43, 43, 43);
+    font-weight: 600;
+    border: none;
+    margin-top: 10px;
     height: 100%;
     resize: none;
     outline: none;
 }
 
+.note-body textarea:focus
+{
+    color: rgb(255, 102, 0);
+}
+
+.note-body textarea::placeholder
+{
+    color: rgb(230, 230, 230);
+}
+
+.note-body button
+{
+    color: rgb(206, 206, 206);
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+
+    background-color: white;
+    border-radius: 5px;
+    padding: 3px 5px;
+    transition: background-color 0.3s ease;
+}
+
+.note-body button:hover
+{
+    background-color: rgb(230, 230, 230);
+    color: rgb(43, 43, 43);
+}
+
+.note-body button:focus
+{
+    background-color: rgb(43, 43, 43);
+    color: #e7e7e7;
+}
+
 .add-btn
 {   
+    color: white;
+    box-shadow: 0px 0px 5px rgba(186, 186, 186, 0.99);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    border: none;
+    background-color: #4ce68c;
+    border-radius: 90px;
+    bottom: 10%;
     right: 50px;
     position: fixed;
-    padding: 20px 30px;
+    width: 80px;
+    height: 80px;
+    padding: 10px 10px 10px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover
+{
+    background-color: #28b67f;
+}
+
+.add-btn:active
+{
+    background-color: #272643;
 }

@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import NoteContainer from './NoteContainer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -13,7 +13,24 @@ function App() {
 
   const [notes, setNotes] = useState([
 
-]);
+  ]);
+
+  useEffect(() => 
+  {
+    const savedNotes = JSON.parse(localStorage.getItem('react-note-app-data-#'));
+    if (savedNotes)
+    {
+      setNotes(savedNotes);
+    }
+
+
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('react-note-app-data-#',
+      JSON.stringify(notes)
+    );
+  }, [notes]);
 
 const addNote = () =>
 {
@@ -34,10 +51,30 @@ const deleteNote = (id) =>
   console.log("note deleted")
 }
 
+const printId = (id, title, text) =>
+{
+  const newNotes =  notes.filter((note) => note.id === id);
+  newNotes.title = title;
+  newNotes.text = text;
+
+  notes.forEach(note => {
+    if(note.id === id)
+    {
+      note.title = newNotes.title;
+      note.text = newNotes.text;
+      console.log(note)
+    }
+  });
+
+  setNotes([...notes]);
+
+  console.log(id)
+}
+
   return (
     <>
     <button onClick={addNote} className='add-btn'>Add Note</button>
-    <NoteContainer notes={notes} handleDelNote={deleteNote}/>
+    <NoteContainer notes={notes} handleDelNote={deleteNote} handlePrintId={printId}/>
     </>
   );
 }
