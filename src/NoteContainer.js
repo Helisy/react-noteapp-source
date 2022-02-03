@@ -11,8 +11,8 @@ export default function NoteContainer({notes, handleDelNote, handlePrintId}) {
     return(
         <div className='NoteContainer'>
             {notes.map((note) => (
-               <Note key={getRandomInt(0, 10000)} id={note.id} title={note.title} text={note.text} handleDelNote={handleDelNote}
-               handlePrintId={handlePrintId}/>
+            <Note key={getRandomInt(0, 10000)} id={note.id} title={note.title} text={note.text} handleDelNote={handleDelNote}
+            handlePrintId={handlePrintId}/>
             ))}
         </div>
     );

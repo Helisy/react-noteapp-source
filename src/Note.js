@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-var boo1 = false;
-var boo2 = false;
+let boo1 = false;
+let boo2 = false;
+let edit = false;
 
 export default function Note({id, title, text, handleDelNote, handlePrintId}) {
 
@@ -29,14 +30,35 @@ export default function Note({id, title, text, handleDelNote, handlePrintId}) {
 
     return(
         <div className='note-body'>
-            <input onFocus={()=> boo1 = true} onChange={getTitleInput} value={boo1 ? titleInput : title} placeholder='Title'/>
-            <textarea onFocus={()=> boo2 = true} onChange={getTextInput} value={boo2 ? textInput : text} placeholder='Enter some text here'/>
-            <button onClick={() => handleDelNote(id)}>Delete Note</button>
-            <button onClick={() => {
-                boo1 = false;
-                boo2 = false;
-                handlePrintId(id, titleInput, textInput)
-            }}>Save</button>
+            <input onFocus={() => {if(edit === true){boo1 =  true}}} onChange={getTitleInput} value={boo1 ? titleInput : title} placeholder='Title'/>
+            <textarea onFocus={() => {if(edit === true){boo2 =  true}}} onChange={getTextInput} value={boo2 ? textInput : text} placeholder='Enter some text here'/>
+            <div className='button-container'>
+                <button onClick={() => handleDelNote(id)}>Delete</button>
+                <button className='edit-btn' onClick={() => {
+                    edit = !edit;
+
+                    if(edit === true)
+                    {
+                        setTitleInput(title);
+                        setTextInput(text);
+                    }
+
+                    if(edit === false)
+                    {
+                        boo1 = false;
+                        boo2 = false;
+                    }
+
+                    console.log( edit + ' ' + boo1 + ' ' + boo2);
+
+                    if(edit === false && boo1 === false && boo2 === false)
+                    {
+                        handlePrintId(id, titleInput, textInput)
+                    }
+
+                    
+                }}>{edit ? 'Save' : 'Edit'}</button>
+            </div>
         </div>
     ); 
 }
